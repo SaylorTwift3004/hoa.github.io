@@ -1,0 +1,349 @@
+﻿<!doctype html>
+Nguyễn
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- width để điều chỉnh cho khớp độ rộng màn hình với số pixel thiết bị; initial để thiết lập tỉ lệ zoom ban đầu là 1:1 giữa pixel CSS và pixel thiết bị -->
+		<title>User Management</title> <!--Tiêu đề thanh công cụ-->
+		<link href="css/all.min.css" rel="stylesheet">
+		<link href="b530/css/bootstrap.min.css" rel="stylesheet">
+		<link href="user.css" rel="stylesheet"> <!--Viết sau để đè lên bootstrap (cái của mình)-->
+		
+		<script language="javascript" src="ckeditor.js"></script>
+		<script language="javascript" src="user.js"></script>
+	</head>
+	<body>
+	
+		<div class="container-fluid">
+			<div class="container-lg">
+				<div class="row pt-5 ">
+					<div class="col-lg-12 text-bg-primary opacity-75 ">
+						<div class="user-title py-3 text-center fw-semibold text-uppercase">
+							<i class="fa-solid fa-people-carry-box"></i> User
+						</div>
+					</div>	
+				</div>
+			</div>
+		</div>
+
+		<div class="container-lg bg-success-subtle pt-3">
+		
+			<nav>
+				<div class="nav nav-tabs" id="nav-tab" role="tablist">
+					<button class="nav-link " id="nav-overview-tab" data-bs-toggle="tab" data-bs-target="#nav-overview" type="button" role="tab" aria-controls="nav-overview" aria-selected="true">Overview</button>
+					<button class="nav-link " id="nav-edit-tab" data-bs-toggle="tab" data-bs-target="#nav-edit" type="button" role="tab" aria-controls="nav-edit" aria-selected="false">Edit</button>
+					<button class="nav-link " id="nav-pass-tab" data-bs-toggle="tab" data-bs-target="#nav-pass" type="button" role="tab" aria-controls="nav-pass" aria-selected="false">Change password</button>
+					<button class="nav-link active" id="nav-settings-tab" data-bs-toggle="tab" data-bs-target="#nav-settings" type="button" role="tab" aria-controls="nav-settings" aria-selected="false">Settings</button>
+				</div>
+			</nav>
+			
+			<div class="tab-content  " id="nav-tabContent">
+				<!--Overview-->
+				<div class="tab-pane fade " id="nav-overview" role="tabpanel" aria-labelledby="nav-overview-tab" tabindex="0">Hoa</div>
+				
+				<!--Edit-->
+				<div class="tab-pane fade " id="nav-edit" role="tabpanel" aria-labelledby="nav-edit-tab" tabindex="0">
+					<div class="row align-items-center">
+						<div class="col-lg-12 ">
+							<div class="user-form text-bg-light pt-3 pb-4 mb-3">
+							
+								<form id="editting">
+									<div class="row py-1 align-items-center">
+										<label for="inputName" class="col-sm-2 form-label text-end">User name</label>
+										<div class="col-sm-4 pb-3">
+											<input type="text" class="form-control" id="inputName" aria-describedby="nameHelp">
+											<div id="nameHelp" class="form-text">We'll never share your name with anyone else.</div>
+										</div>
+									</div>
+								  
+									<div class="row py-1 align-items-center">
+										<label for="inputPass" class="col-sm-2 form-label text-end">Password</label>
+										<div class="col-sm-3">
+											<input type="Password" class="form-control" id="inputPass">
+										</div>
+										
+										<label for="inputPass" class="col-sm-2 form-label text-end">Password confirm</label>
+										<div class="col-sm-3">
+											<input type="Password" class="form-control" id="inputPass2	">
+										</div>
+									</div>
+									
+									<div class="row py-1 align-items-center">
+										<label for="inputEmail" class="col-sm-2 form-label text-end">Email</label>
+										<div class="col-sm-3">
+											<input type="text" class="form-control" id="inputEmail">
+										</div>
+										<label for="inputAvatar" class="col-sm-2 form-label text-end">Avatar</label>
+										<div class="col-sm-3">
+											<button class="btn btn-primary btn-sm"><i class="fa-solid fa-upload"></i> Upload image</button>
+											<button class="btn btn-danger btn-sm"><i class="fa-solid fa-x"></i> Clear</button>
+
+										</div>
+									</div>
+									
+									<div class="row py-1 align-items-center">
+										<label for="inputPermis" class="col-sm-2 form-label text-end">Permission</label>
+										<div class="col-sm-3">
+											<script language="javascript">
+												generatePermisV4();
+											</script>
+											
+										</div>
+									</div>
+									
+									<hr class="border">
+									
+									<div class="row py-1 align-items-center">
+										<label for="inputName" class="col-sm-2 form-label text-end">Fullname</label>
+										<div class="col-sm-3">
+											<input type="text" class="form-control" id="inputName">
+										</div>
+										<label for="inputAlias" class="col-sm-2 form-label text-end">Alias</label>
+										<div class="col-sm-3">
+											<input type="text" class="form-control" id="inputAlias">
+										</div>
+									</div>
+									
+									<div class="row py-1 align-items-center">
+										<label for="inputBirthday" class="col-sm-2 form-label text-end">Birthday</label>
+										<div class="col-sm-3">
+											<input type="date" class="form-control" id="inputBirthday">
+										</div>
+										<label for="inputGender" class="col-sm-2 form-label text-end">Gender</label>
+										<div class="col-sm-3">
+											<select class="form-control" id="inputPermis">
+											<option value="0">---Select---</option>
+											<option value="1">Male</option>
+											<option value="2">Female</option>
+											<option value="3">Prefer not to respond</option>
+											</select>
+										</div>
+									</div>
+									
+									<div class="row py-1 align-items-center">
+										<label for="inputAddr" class="col-sm-2 form-label text-end">Address</label>
+										<div class="col-sm-8">
+											<input type="Text" class="form-control" id="inputAddr">
+										</div>
+									</div>
+									
+									<div class="row py-1 align-items-center">
+										<label for="inputPhone" class="col-sm-2 form-label text-end">Phone</label>
+										<div class="col-sm-3">
+											<input type="Text" class="form-control" id="inputPhone">
+										</div>
+										<label for="inputMobile" class="col-sm-2 form-label text-end">Mobile</label>
+										<div class="col-sm-3">
+											<input type="text" class="form-control" id="inputMobile">
+										</div>
+										
+									</div>
+									
+									<div class="row py-2 align-items-center">
+										<label for="editor" class="col-sm-2 form-label text-end">Provider details</label>
+										<div class="col-sm-9 ">
+											<textarea id="editor" class="form-control"></textarea> 
+										</div>
+									</div>
+									
+									<!--script language="javascript">
+										CKEDITOR.replace('editor');
+									</script> -->
+									
+									<hr class="border border-danger border-1 opacity-70">
+
+									<div class="row py-1 align-items-center">
+										<label for="inputCompany" class="col-sm-2 form-label text-end">Company name</label>
+										<div class="col-sm-8">
+											<input type="text" class="form-control" id="inputCompany">
+										</div>
+									</div>
+									
+									<div class="row py-1 align-items-center">
+										<label for="inputOfficePhone" class="col-sm-2 form-label text-end">Office Phone</label>
+										<div class="col-sm-3">
+											<input type="text" class="form-control" id="inputOfficePhone">
+										</div>
+									</div>
+
+									<div class="row py-1 align-items-center">
+										<label for="inputCompanyAddr" class="col-sm-2 form-label text-end">Company address</label>
+										<div class="col-sm-8">
+											<input type="text" class="form-control" id="inputCompanyAddr">
+										</div>
+									</div>
+									
+									<div class="row py-1 align-items-center">
+										<label for="inputCompanyAddr" class="col-sm-2 form-label text-end">Company map</label>
+										<div class="col-sm-9">
+											<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4680.00492124977!2d105.73393667781754!3d21.053757731613143!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31345457e292d5bf%3A0x20ac91c94d74439a!2zVHLGsOG7nW5nIMSQ4bqhaSBo4buNYyBDw7RuZyBuZ2hp4buHcCBIw6AgTuG7mWk!5e0!3m2!1svi!2s!4v1676776766861!5m2!1svi!2s"
+											width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+										</div>
+									</div>
+									
+									<div class="row py-1 align-items-center">
+										<div class="col-sm-6 offset-sm-2">
+											<input type="checkbox" class="form-check-input" id="chksave">
+											<label class="form-check-label" for="chksave"> Are you agree with rules of Account?</label>
+										</div>
+									</div>
+								  
+									<div class="row py-2 align-items-center">
+										<div class="col-sm-12 text-center">
+										<a href="https://www.facebook.com/SirlockHolmes02"class="text-decoration-none"><i class="fa-solid fa-headset"></i> Sign in?</a>
+										&nbsp;&nbsp;|&nbsp;&nbsp;
+										<a href="#"class="text-decoration-none"><i class="fa-solid fa-exclamation"></i> Help?</a>
+										</div>
+									</div>
+								  
+									<div class="row py-2 align-items-center">
+										<div class="col-sm-12 text-center">
+											<button type="button" class="btn btn-primary"><i class="fa-solid fa-right-to-bracket"></i> Save change</button>
+											<button type="button" class="btn btn-secondary"><i class="fa-solid fa-right-from-bracket"></i> Cancel</button>
+										</div>
+									</div>
+								  
+									<hr class="border border-danger border-1 opacity-70">
+								  
+									<div class="row pt-1 pb-3 align-items-center">
+										<div class="col-sm-11 text-end">
+										<a href="#" class="text-decoration-none"><i class="fa-solid fa-language"></i> Vietnamese</a>
+										</div>
+									</div>
+								  
+								</form>
+								
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<!--Change password-->
+				<div class="tab-pane fade " id="nav-pass" role="tabpanel" aria-labelledby="nav-pass-tab" tabindex="0">
+					<div class="row align-items-center">
+						<div class="col-lg-12 ">
+							<div class="login-form text-bg-light pt-3 pb-4 mb-3">
+							
+								<form>
+									<div class="row py-1 align-items-center">
+										<label for="inputOldPass" class="col-sm-2 form-label text-end">Old Password</label>
+										<div class="col-sm-3">
+											<input type="password" class="form-control" id="inputOldPass">
+										</div>
+									</div>
+									
+									<div class="row py-1 align-items-center">
+										<label for="inputNewPass" class="col-sm-2 form-label text-end">New Password</label>
+										<div class="col-sm-3">
+											<input type="password" class="form-control" id="inputNewPass">
+										</div>
+									
+										<label for="inputConfirmPass" class="col-sm-2 form-label text-end">Confirm Password</label>
+										<div class="col-sm-3">
+											<input type="password" class="form-control" id="inputConfirmPassPass">
+										</div>
+									</div>
+									
+									<div class="row py-1 align-items-center">
+										<label for="inputRandomPass" class="col-sm-2 form-label text-end">Random Password</label>
+										<div class="col-sm-3">
+											<input type="checkbox" class="form-check-input" id="inputRandomPass">
+											&nbsp;&nbsp;
+											<button class="btn btn-secondary btn-sm" disabled>Generate!</button>
+										</div>
+									</div>
+									<div class="row py-2 align-items-center">
+										<div class="col-sm-12 text-center">
+											<button type="button" class="btn btn-primary"><i class="fa-solid fa-right-to-bracket"></i> Save</button>
+											<button type="button" class="btn btn-secondary"><i class="fa-solid fa-right-from-bracket"></i> Cancel</button>
+										</div>
+									</div>
+												
+								</form>
+								
+							</div>
+						</div>
+					</div>	
+				</div>
+				
+				<!--Settings-->
+				<div class="tab-pane fade show active" id="nav-settings" role="tabpanel" aria-labelledby="nav-settings-tab" tabindex="0">
+					<div class="row align-items-center">
+						<div class="col-lg-12 ">
+							<div class="login-form text-bg-light pt-3 pb-4 mb-3">
+							
+								<form id="settings">
+								
+									<div class="row py-1 align-items-center">
+										<label for="inputPermis" class="col-sm-2 form-label text-end">Permission</label>
+										<div class="col-sm-3">
+											<script language="javascript">
+												generatePermisV1();
+											</script>
+										</div>
+									</div>
+									
+									<div class="row py-1 align-items-center">
+										<label for="inputRoles" class="col-sm-2 form-label text-end">Roles</label>
+										<div class="col-sm-9">
+											<script language="javascript">
+												generateRoles();
+											</script>
+										</div>
+									</div>
+									
+									<hr class="border border-danger border-1 opacity-70">
+									
+									<div class="row py-1 align-items-center">
+									
+										<label for="inputFace" class="col-sm-2 form-label text-end">Facebook</label>
+										<div class="col-sm-3">
+											<input type="text" class="form-control" id="inputFace">
+										</div>
+										
+									</div>
+									
+									<div class="row py-1 align-items-center">
+									
+										<label for="inputTwitter" class="col-sm-2 form-label text-end">Twitter</label>
+										<div class="col-sm-3">
+											<input type="text" class="form-control" id="inputTwitter">
+										</div>
+										
+									</div>
+									
+									<div class="row py-2 align-items-center">
+										<div class="col-sm-12 text-center">
+											<button type="button" class="btn btn-primary"><i class="fa-solid fa-right-to-bracket"></i> Save</button>
+											<button type="button" class="btn btn-secondary"><i class="fa-solid fa-right-from-bracket"></i> Cancel</button>
+										</div>
+									</div>
+									
+								</form>
+								
+							</div>
+						</div>
+					</div>	
+				</div>
+				
+			</div>
+		
+		</div>
+		
+		<script>
+			ClassicEditor
+				.create( document.querySelector( '#editor' ), {
+					// toolbar: [ 'heading', '|', 'bold', 'italic', 'link' ]
+				} )
+				.then( editor => {
+					window.editor = editor;
+				} )
+				.catch( err => {
+					console.error( err.stack );
+				} );
+		</script>
+		
+		<script src="b530/js/bootstrap.bundle.min.js" rel="stylesheet" ></script></script>
+	</body>
+</html>
